@@ -24,6 +24,15 @@ const avaliableRadius = [
 export function Radius() {
   const [activeRadius, setActiveRadius] = useState({ value: 0.5 });
 
+  useEffect(() => {
+    const rootStyles = window.getComputedStyle(document.documentElement);
+    const defaultRadius = rootStyles.getPropertyValue("--radius").split(" ");
+
+    setActiveRadius({
+      value: parseFloat(defaultRadius[0]),
+    });
+  }, []);
+
   const handleClick = (radius: { value: number }) => {
     document.documentElement.style.setProperty(
       "--radius",

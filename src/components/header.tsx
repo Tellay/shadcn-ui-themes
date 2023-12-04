@@ -11,7 +11,11 @@ export async function Header() {
     <header className="w-full border-b">
       <div className="container flex h-14 items-center justify-between">
         <MobileSidebar />
-        <Link className="mr-6 hidden items-center space-x-2 md:flex" href="/">
+        <Link
+          className="mr-6 hidden items-center space-x-2 md:flex"
+          href="https://github.com/shadcn-ui/ui"
+          target="_blank"
+        >
           <Logo />
           <span className="font-bold">shadcn/ui themes</span>
         </Link>
@@ -19,7 +23,7 @@ export async function Header() {
         <div className="flex items-center gap-1">
           <Link
             className={buttonVariants({ variant: "ghost", size: "icon" })}
-            href="https://github.com/tellay/shadcn-themes"
+            href="https://github.com/Tellay/shadcn-ui-themes"
             target="_blank"
           >
             <GitHub />

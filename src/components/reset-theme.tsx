@@ -24,7 +24,7 @@ export function ResetTheme() {
             <span className="sr-only">Reset theme</span>
           </Button>
         </TooltipTrigger>
-        <TooltipContent>
+        <TooltipContent className="hidden sm:block">
           <p>Reset to the default theme</p>
         </TooltipContent>
       </Tooltip>

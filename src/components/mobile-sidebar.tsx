@@ -22,14 +22,16 @@ export async function MobileSidebar() {
       <SheetTrigger className="block md:hidden" asChild>
         <Button variant="link" size={"icon"}>
           <SheetIcon />
+          <span className="sr-only">Open mobile sidebar</span>
         </Button>
       </SheetTrigger>
       <SheetContent side={"left"}>
         <SheetHeader>
           <SheetTitle>
             <Link
-              className="mr-6 flex items-center space-x-2 text-base"
-              href="/"
+              className="mr-6 flex w-fit items-center space-x-2 text-base"
+              href="https://github.com/shadcn-ui/ui"
+              target="_blank"
             >
               <Logo />
               <span className="font-bold">shadcn/ui themes</span>
