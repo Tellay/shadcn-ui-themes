@@ -12,7 +12,7 @@ Customize your [shadcn/ui](https://github.com/shadcn-ui/ui) theme that you can c
 - [x] Add more shadcn/ui example components
 - [x] Restore to the default theme
 - [x] Export the theme
-- [] Saving the theme to local storage
+- [ ] Saving the theme to local storage
 
 ## Contributing
 
