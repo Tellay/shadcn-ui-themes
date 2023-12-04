@@ -2,6 +2,7 @@ import { CopyTheme } from "@/components/copy-theme";
 import { Header } from "@/components/header";
 import { AlertCircle, ArrowRight, Terminal } from "@/components/icons";
 import { Sidebar } from "@/components/sidebar";
+import { ToastDemo } from "@/components/toast-demo";
 import {
   Accordion,
   AccordionContent,
@@ -12,11 +13,11 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
   Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
 } from "@/components/ui/card";
 import {
   Dialog,
@@ -28,7 +29,6 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Select,
   SelectContent,
@@ -41,7 +41,6 @@ import { Switch } from "@/components/ui/switch";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableFooter,
   TableHead,
@@ -189,7 +188,7 @@ export default function Home() {
             </Table>
 
             {/* Fourth Row */}
-            <div className="mt-2 grid grid-cols-2 gap-2 lg:grid-cols-[1fr_auto_1fr_1fr]">
+            <div className="mt-2 grid grid-cols-2 gap-2 lg:grid-cols-[1fr_auto_1fr_1fr_1fr]">
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -222,6 +221,18 @@ export default function Home() {
               </Dialog>
 
               <Slider defaultValue={[50]} max={100} step={1} />
+
+              <ToastDemo className="col-span-2 lg:col-span-1" />
+            </div>
+
+            {/* Fifth Row */}
+            <div className="mt-2 grid grid-cols-2 gap-2 lg:grid-cols-6">
+              <Button variant="default">Default</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button variant="outline">Outline</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="destructive">Destructive</Button>
+              <Button variant="link">Link</Button>
             </div>
           </section>
         </div>
