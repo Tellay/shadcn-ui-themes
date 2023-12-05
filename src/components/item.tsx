@@ -39,7 +39,7 @@ export function Item({ theme }: ItemProps) {
       h: parseFloat(defaultColor[0]),
       s: parseFloat(defaultColor[1]),
       l: parseFloat(defaultColor[2]),
-      a: 1,
+      a: hsva.a,
     });
     const hexColor = hsvaToHex(hsvaColor);
 
@@ -57,6 +57,23 @@ export function Item({ theme }: ItemProps) {
       `${newColor.h.toFixed(2)} ${newColor.s.toFixed(2)}% ${newColor.l.toFixed(
         2,
       )}%`,
+    );
+  };
+
+  const refreshColors = (newColor: { h: number }) => {
+    const color = hsvaToHsla({
+      h: newColor.h,
+      s: hsva.s,
+      v: hsva.v,
+      a: hsva.a,
+    });
+
+    setHsva({ h: newColor.h, s: hsva.s, v: hsva.v, a: hsva.a });
+    setHex(hsvaToHex({ h: newColor.h, s: hsva.s, v: hsva.v, a: hsva.a }));
+
+    (document.querySelector(":root") as HTMLElement)?.style.setProperty(
+      theme.variable,
+      `${color.h.toFixed(2)} ${color.s.toFixed(2)}% ${color.l.toFixed(2)}%`,
     );
   };
 
@@ -88,7 +105,10 @@ export function Item({ theme }: ItemProps) {
                 className="mt-1 border"
                 radius="var(--radius)"
                 hue={hsva.h}
-                onChange={(newHue) => setHsva({ ...hsva, ...newHue })}
+                onChange={(newHue) => {
+                  setHsva({ ...hsva, ...newHue });
+                  refreshColors(newHue);
+                }}
               />
 
               <div>
