@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Theme } from "@/lib/theme";
 import {
   hexToHsva,
@@ -11,6 +12,7 @@ import {
   Saturation,
 } from "@uiw/react-color";
 
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,10 +20,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
+import { EyeDropper } from "./eyeDropper";
 
 interface ItemProps {
   theme: Theme;
@@ -91,7 +93,10 @@ export function Item({ theme }: ItemProps) {
             />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-[224px]">
-            <DropdownMenuLabel>{theme.title}</DropdownMenuLabel>
+            <DropdownMenuLabel className="flex items-center justify-between">
+              {theme.title}
+              <EyeDropper handleChangeStyles={handleChangeStyles} />
+            </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <div className="flex flex-col p-2">
               <Saturation

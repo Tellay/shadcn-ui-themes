@@ -68,6 +68,9 @@ dependencies:
   tailwindcss-animate:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.3.5)
+  use-eye-dropper:
+    specifier: ^1.6.0
+    version: 1.6.0(react@18.2.0)
   zustand:
     specifier: ^4.4.7
     version: 4.4.7(@types/react@18.2.40)(react@18.2.0)
@@ -2231,6 +2234,14 @@ packages:
       '@types/react': 18.2.40
       react: 18.2.0
       tslib: 2.6.2
+    dev: false
+
+  /use-eye-dropper@1.6.0(react@18.2.0):
+    resolution: {integrity: sha512-pIGWksFgc1EK25xxcL5esqMAKhu9tU9ecq63qWyyI7z8+4bPwJ8da7Hb9qldgYYrIzfxEcFjSqW7qFopeV1i4g==}
+    peerDependencies:
+      react: ^0.13.0 || ^0.14.0 || >=15
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /use-sidecar@1.1.2(@types/react@18.2.40)(react@18.2.0):

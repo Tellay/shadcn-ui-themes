@@ -30,6 +30,7 @@
     "react-dom": "^18",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
+    "use-eye-dropper": "^1.6.0",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
