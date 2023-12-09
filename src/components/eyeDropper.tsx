@@ -36,7 +36,7 @@ export function EyeDropper({ handleChangeStyles }: EyeDropperProps) {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
-            className="h-6 w-6"
+            className="hidden h-6 w-6 sm:inline-flex"
             variant={"ghost"}
             size={"icon"}
             disabled={!isSupported()}
