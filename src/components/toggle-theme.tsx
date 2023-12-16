@@ -1,5 +1,9 @@
 "use client";
 
+import { useTheme } from "next-themes";
+
+import { MoonIcon, SunIcon } from "@/components/icons";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,8 +11,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
-import { MoonIcon, SunIcon } from "./icons";
 
 export function ToggleTheme() {
   const { setTheme } = useTheme();

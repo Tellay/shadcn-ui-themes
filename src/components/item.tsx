@@ -1,16 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Theme } from "@/lib/theme";
 import {
   hexToHsva,
   hslaToHsva,
+  HslColor,
   HsvaColor,
   hsvaToHex,
   hsvaToHsla,
   Hue,
   Saturation,
+  validHex,
 } from "@uiw/react-color";
+
+import { Theme } from "@/lib/theme";
+
+import { EyeDropper } from "@/components/eyeDropper";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -23,15 +28,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { EyeDropper } from "./eyeDropper";
-
 interface ItemProps {
   theme: Theme;
 }
 
 export function Item({ theme }: ItemProps) {
   const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
-  const [hex, setHex] = useState("#000000");
+  const [hexValue, setHexValue] = useState("#000000");
 
   useEffect(() => {
     const rootStyles = window.getComputedStyle(document.documentElement);
@@ -43,40 +46,43 @@ export function Item({ theme }: ItemProps) {
       l: parseFloat(defaultColor[2]),
       a: hsva.a,
     });
-    const hexColor = hsvaToHex(hsvaColor);
 
-    setHex(hexColor);
     setHsva(hsvaColor);
+    setHexValue(hsvaToHex(hsvaColor));
   }, [theme]);
 
-  const handleChangeStyles = (color: HsvaColor) => {
-    setHsva(color);
-    setHex(hsvaToHex(color));
-
-    const newColor = hsvaToHsla(color);
-    (document.querySelector(":root") as HTMLElement)?.style.setProperty(
-      theme.variable,
-      `${newColor.h.toFixed(2)} ${newColor.s.toFixed(2)}% ${newColor.l.toFixed(
-        2,
-      )}%`,
-    );
-  };
-
-  const refreshColors = (newColor: { h: number }) => {
-    const color = hsvaToHsla({
-      h: newColor.h,
-      s: hsva.s,
-      v: hsva.v,
-      a: hsva.a,
-    });
-
-    setHsva({ h: newColor.h, s: hsva.s, v: hsva.v, a: hsva.a });
-    setHex(hsvaToHex({ h: newColor.h, s: hsva.s, v: hsva.v, a: hsva.a }));
-
+  const updateColors = (color: HslColor) => {
     (document.querySelector(":root") as HTMLElement)?.style.setProperty(
       theme.variable,
       `${color.h.toFixed(2)} ${color.s.toFixed(2)}% ${color.l.toFixed(2)}%`,
     );
+  };
+
+  const handleEyeDropper = (color: HslColor) => {
+    const hsvaColor = hslaToHsva({ ...color, a: 1 });
+    setHexValue(hsvaToHex(hsvaColor));
+    updateColors(color);
+  };
+
+  const handleSaturation = (color: HsvaColor) => {
+    setHsva(color);
+    setHexValue(hsvaToHex(color));
+    updateColors(hsvaToHsla(color));
+  };
+
+  const handleHue = (color: { h: number }) => {
+    setHsva({ ...hsva, h: color.h });
+    setHexValue(hsvaToHex({ ...hsva, h: color.h }));
+    updateColors(hsvaToHsla({ ...hsva }));
+  };
+
+  const handleHex = (color: string) => {
+    setHexValue(color);
+
+    if (validHex(color)) {
+      setHsva(hexToHsva(color));
+      updateColors(hsvaToHsla(hexToHsva(color)));
+    }
   };
 
   return (
@@ -95,7 +101,7 @@ export function Item({ theme }: ItemProps) {
           <DropdownMenuContent className="w-[224px]">
             <DropdownMenuLabel className="flex items-center justify-between">
               {theme.title}
-              <EyeDropper handleChangeStyles={handleChangeStyles} />
+              <EyeDropper handleChangeStyles={handleEyeDropper} />
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <div className="flex flex-col p-2">
@@ -103,33 +109,23 @@ export function Item({ theme }: ItemProps) {
                 className="border"
                 radius="var(--radius)"
                 hsva={hsva}
-                onChange={(color) => handleChangeStyles(color)}
+                onChange={handleSaturation}
               />
 
               <Hue
                 className="mt-1 border"
                 radius="var(--radius)"
                 hue={hsva.h}
-                onChange={(newHue) => {
-                  setHsva({ ...hsva, ...newHue });
-                  refreshColors(newHue);
-                }}
+                onChange={handleHue}
               />
 
-              <div>
-                <div>
-                  <Label className="text-xs">Hex</Label>
-                  <Input
-                    className="h-7 px-1 pb-1.5 text-xs"
-                    value={hex}
-                    onChange={(e) => {
-                      if (e.target.value.length > 1) {
-                        setHex(e.target.value);
-                        handleChangeStyles(hexToHsva(e.target.value));
-                      }
-                    }}
-                  />
-                </div>
+              <div className="mt-0.5">
+                <Label className="text-xs">Hex</Label>
+                <Input
+                  className="h-7 px-1 pb-1.5 text-xs"
+                  value={hexValue}
+                  onChange={(e) => handleHex(e.target.value)}
+                />
               </div>
             </div>
           </DropdownMenuContent>

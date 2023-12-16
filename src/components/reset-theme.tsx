@@ -1,7 +1,8 @@
 "use client";
 
+import { ResetIcon } from "@/components/icons";
+
 import { Button } from "@/components/ui/button";
-import { ResetIcon } from "./icons";
 import {
   Tooltip,
   TooltipContent,

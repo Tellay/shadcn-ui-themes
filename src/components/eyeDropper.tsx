@@ -1,7 +1,9 @@
 "use client";
 
 import useEyeDropper from "use-eye-dropper";
-import { hexToHsva, HsvaColor } from "@uiw/react-color";
+import { hexToHsva, HslColor, hsvaToHsla } from "@uiw/react-color";
+
+import { PipetteIcon } from "@/components/icons";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -11,10 +13,8 @@ import {
   TooltipContent,
 } from "@/components/ui/tooltip";
 
-import { PipetteIcon } from "./icons";
-
 interface EyeDropperProps {
-  handleChangeStyles: (color: HsvaColor) => void;
+  handleChangeStyles: (color: HslColor) => void;
 }
 
 export function EyeDropper({ handleChangeStyles }: EyeDropperProps) {
@@ -25,7 +25,7 @@ export function EyeDropper({ handleChangeStyles }: EyeDropperProps) {
       const color = await open();
       if (!color) return;
       const hsvaColor = hexToHsva(color.sRGBHex);
-      handleChangeStyles({ ...hsvaColor });
+      handleChangeStyles(hsvaToHsla(hsvaColor));
     } catch (e) {
       return;
     }

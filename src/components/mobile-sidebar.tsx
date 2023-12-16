@@ -1,20 +1,23 @@
+import Link from "next/link";
+
+import { themeColors } from "@/lib/theme";
+
+import { SheetIcon } from "@/components/icons";
+import { Logo } from "@/components/logo";
+
+import { Item } from "@/components/item";
+import { ResetTheme } from "@/components/reset-theme";
+import { Radius } from "@/components/radius";
+
 import {
   Sheet,
   SheetTrigger,
   SheetContent,
   SheetHeader,
   SheetTitle,
-  SheetDescription,
 } from "@/components/ui/sheet";
-import { SheetIcon } from "./icons";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Logo } from "./logo";
-import { themeColors } from "@/lib/theme";
-import { Radius } from "./radius";
-import { ResetTheme } from "./reset-theme";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Item } from "./item";
 
 export async function MobileSidebar() {
   return (

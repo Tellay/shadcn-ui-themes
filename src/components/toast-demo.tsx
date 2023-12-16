@@ -1,8 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+
 import { cn } from "@/lib/utils";
+
+import { Button } from "@/components/ui/button";
 
 export function ToastDemo({ className }: { className?: string }) {
   const { toast } = useToast();

@@ -1,10 +1,12 @@
 import Link from "next/link";
 
-import { Logo } from "./logo";
-import { GitHub } from "./icons";
-import { buttonVariants } from "./ui/button";
-import { ToggleTheme } from "./toggle-theme";
-import { MobileSidebar } from "./mobile-sidebar";
+import { GitHub } from "@/components/icons";
+import { Logo } from "@/components/logo";
+
+import { ToggleTheme } from "@/components/toggle-theme";
+import { MobileSidebar } from "@/components/mobile-sidebar";
+
+import { buttonVariants } from "@/components/ui/button";
 
 export async function Header() {
   return (

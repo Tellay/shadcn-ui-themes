@@ -1,9 +1,9 @@
 import { themeColors } from "@/lib/theme";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Item } from "@/components/item";
 import { Radius } from "@/components/radius";
 import { ResetTheme } from "@/components/reset-theme";
+import { Item } from "@/components/item";
 
 export async function Sidebar() {
   return (

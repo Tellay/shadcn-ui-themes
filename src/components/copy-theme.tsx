@@ -2,10 +2,11 @@
 
 import { themeColors, radiusTheme } from "@/lib/theme";
 
+import { CopyIcon } from "@/components/icons";
+
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 
-import { CopyIcon } from "./icons";
 import {
   Tooltip,
   TooltipContent,
