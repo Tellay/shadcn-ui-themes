@@ -61,6 +61,7 @@ export function Item({ theme }: ItemProps) {
   const handleEyeDropper = (color: HslColor) => {
     const hsvaColor = hslaToHsva({ ...color, a: 1 });
     setHexValue(hsvaToHex(hsvaColor));
+    setHsva(hsvaColor);
     updateColors(color);
   };
 
