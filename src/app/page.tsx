@@ -1,8 +1,9 @@
+import { AlertCircle, ArrowRight, Terminal } from "@/components/icons";
 import { CopyTheme } from "@/components/copy-theme";
 import { Header } from "@/components/header";
-import { AlertCircle, ArrowRight, Terminal } from "@/components/icons";
 import { Sidebar } from "@/components/sidebar";
 import { ToastDemo } from "@/components/toast-demo";
+
 import {
   Accordion,
   AccordionContent,
