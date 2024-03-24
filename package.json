@@ -24,6 +24,7 @@
     "@uiw/react-color": "^2.0.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "geist": "^1.2.2",
     "next": "14.0.3",
     "next-themes": "^0.2.1",
     "react": "^18",
