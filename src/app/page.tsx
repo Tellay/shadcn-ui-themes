@@ -1,9 +1,11 @@
-import { AlertCircle, ArrowRight, Terminal } from "@/components/icons";
 import { CopyTheme } from "@/components/copy-theme";
 import { Header } from "@/components/header";
+import { AlertCircle, ArrowRight, Terminal } from "@/components/icons";
 import { Sidebar } from "@/components/sidebar";
 import { ToastDemo } from "@/components/toast-demo";
 
+import { SaveThemeDialog } from "@/components/save-theme-dialog";
+import { SavedThemes } from "@/components/saved-themes";
 import {
   Accordion,
   AccordionContent,
@@ -68,9 +70,11 @@ export default function Home() {
                 shadcn/ui themes
               </div>
               <ArrowRight />
-              <div className="flex items-center gap-1 whitespace-nowrap font-medium text-foreground">
+              <div className="flex w-full items-center gap-1 whitespace-nowrap font-medium text-foreground">
                 Your Theme
                 <CopyTheme />
+                <SaveThemeDialog />
+                <SavedThemes />
               </div>
             </div>
 

@@ -1,17 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import {
-  hexToHsva,
-  hslaToHsva,
   HslColor,
   HsvaColor,
-  hsvaToHex,
-  hsvaToHsla,
   Hue,
   Saturation,
+  hexToHsva,
+  hslaToHsva,
+  hsvaToHex,
+  hsvaToHsla,
   validHex,
 } from "@uiw/react-color";
+import { useEffect, useState } from "react";
 
 import { Theme } from "@/lib/theme";
 
@@ -33,6 +33,7 @@ interface ItemProps {
 }
 
 export function Item({ theme }: ItemProps) {
+  const [isOpen, setIsOpen] = useState(false);
   const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   const [hexValue, setHexValue] = useState("#000000");
 
@@ -49,7 +50,7 @@ export function Item({ theme }: ItemProps) {
 
     setHsva(hsvaColor);
     setHexValue(hsvaToHex(hsvaColor));
-  }, [theme]);
+  }, [isOpen]);
 
   const updateColors = (color: HslColor) => {
     (document.querySelector(":root") as HTMLElement)?.style.setProperty(
@@ -91,11 +92,11 @@ export function Item({ theme }: ItemProps) {
       <div className="relative flex w-full items-center justify-between rounded-md border border-transparent px-2 py-1 text-muted-foreground">
         {theme.title}
 
-        <DropdownMenu>
+        <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
           <DropdownMenuTrigger asChild>
             <Button
-              variant={"secondary"}
-              className="ml-2 h-6 w-6 shrink-0 p-0 transition-colors hover:opacity-90 sm:ml-0"
+              variant="secondary"
+              className="ml-2 h-6 w-6 shrink-0 border p-0 transition-colors hover:opacity-90 sm:ml-0"
               style={{ backgroundColor: `hsla(var(${theme.variable}))` }}
             />
           </DropdownMenuTrigger>

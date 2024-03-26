@@ -4,13 +4,13 @@ import { useTheme } from "next-themes";
 
 import { MoonIcon, SunIcon } from "@/components/icons";
 
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
 
 export function ToggleTheme() {
   const { setTheme } = useTheme();

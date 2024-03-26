@@ -13,7 +13,9 @@ Customize your [shadcn/ui](https://github.com/shadcn-ui/ui) theme that you can c
 - [x] Restore to the default theme
 - [x] Export the theme
 - [x] Create a eye dropper
-- [ ] Saving the theme to local storage
+- [x] Saving the theme to local storage
+- [x] Select between saved themes
+- [x] Delete saved themes
 
 ## Contributing
 

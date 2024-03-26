@@ -6,29 +6,29 @@ import { SheetIcon } from "@/components/icons";
 import { Logo } from "@/components/logo";
 
 import { Item } from "@/components/item";
-import { ResetTheme } from "@/components/reset-theme";
 import { Radius } from "@/components/radius";
+import { ResetTheme } from "@/components/reset-theme";
 
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sheet,
-  SheetTrigger,
   SheetContent,
   SheetHeader,
   SheetTitle,
+  SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 
 export async function MobileSidebar() {
   return (
     <Sheet>
       <SheetTrigger className="block md:hidden" asChild>
-        <Button variant="link" size={"icon"}>
+        <Button variant="link" size="icon">
           <SheetIcon />
           <span className="sr-only">Open mobile sidebar</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side={"left"}>
+      <SheetContent side="left">
         <SheetHeader>
           <SheetTitle>
             <Link
