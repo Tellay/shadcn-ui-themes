@@ -19,3 +19,10 @@ export function getColors() {
 
   return themeString;
 }
+
+export function getRadius() {
+  const rootStyles = window.getComputedStyle(document.documentElement);
+  const defaultRadius = rootStyles.getPropertyValue("--radius").split(" ");
+
+  return defaultRadius[0];
+}

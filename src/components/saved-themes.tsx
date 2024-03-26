@@ -25,6 +25,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 interface ISavedTheme {
   name: string;
   colors: { title: string; variable: string; color: string }[];
+  radius: string;
 }
 
 const SAVED_THEMES_KEY = "saved_themes";
@@ -49,6 +50,8 @@ export function SavedThemes() {
         item.color,
       );
     });
+
+    document.documentElement.style.setProperty("--radius", theme.radius);
 
     setIsOpen(false);
   };

@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { getColors } from "@/lib/utils";
+import { getColors, getRadius } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -39,6 +39,7 @@ export function SaveThemeForm({ handleClose }: ISaveThemeFormProps) {
 
   function handleSubmit(data: z.infer<typeof formSchema>) {
     const themeColors = getColors();
+    const themeRadius = getRadius();
 
     const themeData = {
       name: data.name,
@@ -49,6 +50,7 @@ export function SaveThemeForm({ handleClose }: ISaveThemeFormProps) {
           color,
         };
       }),
+      radius: themeRadius,
     };
 
     const SAVED_THEMES_KEY = "saved_themes";
