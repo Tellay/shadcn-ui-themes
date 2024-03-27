@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect, KeyboardEvent } from "react";
+import { KeyboardEvent, useEffect, useState } from "react";
 
 import { DeleteThemeIcon, ThemesIcon } from "./icons";
+
+import { useRadius } from "@/stores/use-radius";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -33,6 +35,7 @@ const SAVED_THEMES_KEY = "saved_themes";
 export function SavedThemes() {
   const [isOpen, setIsOpen] = useState(false);
   const [savedThemes, setSavedThemes] = useState<ISavedTheme[]>([]);
+  const { setRadius } = useRadius();
 
   const updateThemes = () => {
     const themes = JSON.parse(localStorage.getItem(SAVED_THEMES_KEY) || "[]");
@@ -53,6 +56,7 @@ export function SavedThemes() {
 
     document.documentElement.style.setProperty("--radius", theme.radius);
 
+    setRadius(parseFloat(theme.radius));
     setIsOpen(false);
   };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useRadius } from "@/stores/use-radius";
 
 import { Button } from "@/components/ui/button";
 
@@ -23,16 +23,7 @@ const avaliableRadius = [
 ];
 
 export function Radius() {
-  const [activeRadius, setActiveRadius] = useState({ value: 0.5 });
-
-  useEffect(() => {
-    const rootStyles = window.getComputedStyle(document.documentElement);
-    const defaultRadius = rootStyles.getPropertyValue("--radius").split(" ");
-
-    setActiveRadius({
-      value: parseFloat(defaultRadius[0]),
-    });
-  }, []);
+  const { radius: activeRadius, setRadius } = useRadius();
 
   const handleClick = (radius: { value: number }) => {
     document.documentElement.style.setProperty(
@@ -40,7 +31,7 @@ export function Radius() {
       `${radius.value}rem`,
     );
 
-    setActiveRadius(radius);
+    setRadius(radius.value);
   };
 
   return (
@@ -49,7 +40,7 @@ export function Radius() {
         <Button
           key={radius.value}
           className={
-            activeRadius.value === radius.value
+            activeRadius === radius.value
               ? "border-2 border-primary font-semibold"
               : ""
           }
