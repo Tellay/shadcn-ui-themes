@@ -24,3 +24,11 @@ Feel free to contribute, I will add a contribution guide later.
 ## License
 
 Licensed under the [MIT license](https://github.com/Tellay/shadcn-ui-themes/blob/main/LICENSE).
+
+## Star History
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=tellay/shadcn-ui-themes&type=Date&theme=dark" />
+  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=tellay/shadcn-ui-themes&type=Date" />
+  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=tellay/shadcn-ui-themes&type=Date" />
+</picture>
