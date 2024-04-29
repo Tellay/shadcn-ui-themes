@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import { getColors, getRadius } from "@/lib/utils";
+import { getColors, getRadius, removeWhitespaces } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
+import { Theme, savedTheme } from "@/lib/theme";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -54,9 +55,22 @@ export function SaveThemeForm({ handleClose }: ISaveThemeFormProps) {
     };
 
     const SAVED_THEMES_KEY = "saved_themes";
-    let savedThemes = JSON.parse(
+    let savedThemes: savedTheme[] = JSON.parse(
       localStorage.getItem(SAVED_THEMES_KEY) || "[]",
     );
+
+    const hasSameThemeName = savedThemes.some(
+      (savedTheme) =>
+        removeWhitespaces(savedTheme.name) === removeWhitespaces(data.name),
+    );
+
+    if (hasSameThemeName) {
+      toast({
+        title: "Ops!",
+        description: "Theme with the same name already exists!",
+      });
+      return;
+    }
 
     localStorage.setItem(
       SAVED_THEMES_KEY,

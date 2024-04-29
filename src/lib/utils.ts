@@ -26,3 +26,7 @@ export function getRadius() {
 
   return defaultRadius[0];
 }
+
+export function removeWhitespaces(text: string) {
+  return text.replace(/\s/g, "");
+}

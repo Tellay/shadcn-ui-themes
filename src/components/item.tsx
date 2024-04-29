@@ -15,7 +15,7 @@ import { useEffect, useState } from "react";
 
 import { Theme } from "@/lib/theme";
 
-import { EyeDropper } from "@/components/eyeDropper";
+import { EyeDropper } from "@/components/eye-dropper";
 
 import { Button } from "@/components/ui/button";
 import {

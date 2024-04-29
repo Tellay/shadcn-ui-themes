@@ -86,3 +86,12 @@ export const radiusTheme = {
   title: "Radius",
   variable: "--radius",
 };
+
+export type savedTheme = {
+  name: string;
+  radius: string;
+  colors: {
+    title: string;
+    variable: string;
+  }[];
+};
